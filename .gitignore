@@ -1,6 +1,17 @@
 *.aux
 *.log
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fls
+*.latexmk
 *.gz
 *.out
 .DS_Store
+*~
+
 
