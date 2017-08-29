@@ -139,7 +139,7 @@ a set of $N$ molecules could be arranged (specifying the location
 and momentum of each) in a system of fixed volume. As an example, in
 Fig.~\ref{fig:NVT} we show a few elements of an ensemble of five molecules.
 \begin{figure}
-\includegraphics[width=\textwidth]{image001}
+\includegraphics[width=\textwidth]{StatMech_figures/image001}
 \caption{\label{fig:NVT}A few members of the $NVT$ ensemble, for $N = 5$.}
 \end{figure}
 
@@ -158,7 +158,7 @@ of observing a given element of an ensemble---its physical
 relevance---comes into play with the probability distribution $\pi$ that
 forms part of the definition of the ensemble.
 \begin{figure}
-\includegraphics[width=\textwidth]{image111}
+\includegraphics[width=\textwidth]{Statmech_figures/image111}
 \caption{\label{fig:NPT}A few members of the \emph{NPT} ensemble, for $N = 5$.}
 \end{figure}
 
@@ -189,7 +189,7 @@ These are summarized in Fig.~\ref{fig:ensembles}, with a schematic of the elemen
 presented for each ensemble.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{image003}
+\includegraphics[width=\textwidth]{StatMech_figures/image003}
 \caption{\label{fig:ensembles}Commonly used ensembles.}
 \end{figure}
 
@@ -331,7 +331,7 @@ sensible prescriptions for the ensemble averages needed to evaluate some
 specific thermodynamic properties from molecular behaviors.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{image011}
+\includegraphics[width=\textwidth]{StatMech_figures/image011}
 \caption{\label{fig:bridgeEqns}Relation between commonly used ensemble and thermodynamic free energies.}
 \end{figure}
 
@@ -397,7 +397,10 @@ The kinetic energy is quadratic in the momenta:
 and this contribution can be treated analytically in the partition
 function:
 \begin{align}
-Q &= \frac{1}{{h^{dN}}}\frac{1}{N!}\int {d{{\bf p}^N}{e^{ - \beta \sum {|{\bf p}_i|^2/2m} }}\int {d{{\bf r}^N}} {e^{ - \beta U({{\bf r}^N})}}} \nonumber\\ &= \frac{1}{{\Lambda ^{dN}}}\frac{1}{N!}\int {d{{\bf r}^N}} {e^{ - \beta U({{\bf r}^N})}}\nonumber\\ &= \frac{1}{{\Lambda ^{dN}}}\frac{1}{N!}{Z_N}\nonumber\end{align}
+Q &= \frac{1}{{h^{dN}}}\frac{1}{N!}\int {d{{\bf p}^N}{e^{ - \beta \sum {|{\bf p}_i|^2/2m} }}\int {d{{\bf r}^N}} {e^{ - \beta U({{\bf r}^N})}}} \nonumber\\
+ &= \frac{1}{{\Lambda ^{dN}}}\frac{1}{N!}\int {d{{\bf r}^N}} {e^{ - \beta U({{\bf r}^N})}}\nonumber\\
+ &= \frac{1}{{\Lambda ^{dN}}}\frac{1}{N!}{Z_N}\nonumber
+\end{align}
 where $\Lambda \equiv h/\sqrt{2\pi mk_{\rm B}T}$ is known as the thermal de Broglie wavelength, and
 $Z_N$ as defined here is the \emph{configurational
 integral} (some authors define it to not include the ${N}!$ term).
@@ -441,7 +444,7 @@ be viewed in terms of its ergodicity. It is ergodic if it does generate a
 representative sample (in the time it is given to proceed).
 
 \begin{figure}
-\includegraphics[width=\textwidth]{image036}
+\includegraphics[width=\textwidth]{StatMech_figures/image036}
 \caption{\label{fig:ergodicity}Illustration of ergodicity. Plane represents phase space, and two trajectories are shown. If non-ergodic, there are regions of phase space that are not accessible by both trajectories, as suggested by the green subregion.}
 \end{figure}
 
@@ -465,7 +468,11 @@ If we apply the canonical-ensemble bridge equation to write the
 Helmholtz free energy \emph{A} in terms of the partition function we
 have the following
 \begin{align*}
-{E_{{\rm{internal}}}} &= {\left( {\frac{{\partial (A/k_{\rm B}T)}}{{\partial (1/k_{\rm B}T)}}} \right)_{V,N}}\\ &=  - \frac{{\partial \ln Q}}{{\partial \beta }}\\ &=  - \frac{1}{Q}\frac{\partial }{{\partial \beta }}\left[\frac{1}{h^{dN}N!}\int {d{{\bf p}^N}\int {d{{\bf r}^N}} {e^{ - \beta E({{\bf p}^N},{{\bf r}^N})}}} \right]\\ &=  + \frac{1}{Q}{\frac{1}{h^{dN}N!}\int {d{{\bf p}^N}\int {d{{\bf r}^N}E({{\bf p}^N},{{\bf r}^N})} {e^{ - \beta E({{\bf p}^N},{{\bf r}^N})}}}} \\ &= \left\langle E \right\rangle 
+{E_{{\rm{internal}}}} &= {\left( {\frac{{\partial (A/k_{\rm B}T)}}{{\partial (1/k_{\rm B}T)}}} \right)_{V,N}}\\
+ &=  - \frac{{\partial \ln Q}}{{\partial \beta }}\\
+ &=  - \frac{1}{Q}\frac{\partial }{{\partial \beta }}\left[\frac{1}{h^{dN}N!}\int {d{{\bf p}^N}\int {d{{\bf r}^N}} {e^{ - \beta E({{\bf p}^N},{{\bf r}^N})}}} \right]\\
+ &=  + \frac{1}{Q}{\frac{1}{h^{dN}N!}\int {d{{\bf p}^N}\int {d{{\bf r}^N}E({{\bf p}^N},{{\bf r}^N})} {e^{ - \beta E({{\bf p}^N},{{\bf r}^N})}}}} \\
+ &= \left\langle E \right\rangle 
 \end{align*}
 which is what we set out to prove. Other simple averages, such as the
 average volume in the \emph{NPT} ensemble, or the average number of molecules
@@ -476,7 +483,11 @@ verification as an exercise to the reader.
 We can take our result for the energy one step further by introducing
 the separation of the energy into its kinetic and potential
 contributions, as discussed above:
-\begin{align*}\left\langle E \right\rangle  &= \frac{1}{Q}\frac{1}{{{h^{dN}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}\left[ {K({{\bf{p}}^N}) + U({{\bf{r}}^N})} \right]} {e^{ - \beta E({{\bf{p}}^N},{{\bf{r}}^N})}}} \\ &= \frac{1}{{{\Lambda ^{dN}}}}\int {d{{\bf{p}}^N}\left( {\sum {{\textstyle{{{{\left| {{{\bf{p}}_i}} \right|}^2}} \over {2{m_i}}}}} } \right){e^{ - \beta \sum {{{\left| {{{\bf{p}}_i}} \right|}^2}/2{m_i}} }}}  + \frac{1}{{{Z_N}N!}}\int {d{{\bf{r}}^N}U({{\bf{r}}^N}){e^{ - \beta U({{\bf{r}}^N})}}} \\ &= \frac{d}{2}Nk_{\rm B}T + \left\langle U \right\rangle \end{align*}
+\begin{align*}
+\left\langle E \right\rangle  &= \frac{1}{Q}\frac{1}{{{h^{dN}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}\left[ {K({{\bf{p}}^N}) + U({{\bf{r}}^N})} \right]} {e^{ - \beta E({{\bf{p}}^N},{{\bf{r}}^N})}}} \\
+ &= \frac{1}{{{\Lambda ^{dN}}}}\int {d{{\bf{p}}^N}\left( {\sum {{\textstyle{{{{\left| {{{\bf{p}}_i}} \right|}^2}} \over {2{m_i}}}}} } \right){e^{ - \beta \sum {{{\left| {{{\bf{p}}_i}} \right|}^2}/2{m_i}} }}}  + \frac{1}{{{Z_N}N!}}\int {d{{\bf{r}}^N}U({{\bf{r}}^N}){e^{ - \beta U({{\bf{r}}^N})}}} \\
+ &= \frac{d}{2}Nk_{\rm B}T + \left\langle U \right\rangle 
+\end{align*}
 So the kinetic-energy contribution can be treated analytically, and we
 arrive at the well-known result that each configuration coordinate
 contributes $k_{\rm B}T/2$ to the internal kinetic energy. This result is known as
@@ -524,7 +535,11 @@ a need for another route to measurement of the pressure in our
 simulations. We follow the same approach we introduced to connect the
 thermodynamic internal energy to an ensemble average, beginning now with
 the thermodynamic expression for the pressure:
-\begin{align*}P &=  - {\left( {\frac{{\partial (A/kT)}}{{\partial V}}} \right)_{T,N}}\\ &= \frac{{\partial \ln Q}}{{\partial V}}\\ &= \frac{1}{Q}\frac{\partial }{{\partial V}}\left[ {\frac{1}{{{h^{3N}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}} {e^{ - \beta E({{\bf{p}}^N},{{\bf{r}}^N})}}} } \right]\end{align*}
+\begin{align*}
+P &=  - {\left( {\frac{{\partial (A/kT)}}{{\partial V}}} \right)_{T,N}}\\
+ &= \frac{{\partial \ln Q}}{{\partial V}}\\
+ &= \frac{1}{Q}\frac{\partial }{{\partial V}}\left[ {\frac{1}{{{h^{3N}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}} {e^{ - \beta E({{\bf{p}}^N},{{\bf{r}}^N})}}} } \right]
+\end{align*}
 Where is $V$ in the phase-space integral? It lies in the limits of
 integration of the position integrals. There is a standard trick used to
 move the volume dependence into a position where it is more easily
@@ -549,7 +564,7 @@ on a molecule is the gradient of the potential
 \[{\bf{F}} =  - \left( {\frac{{\partial U}}{{\partial {r_x}}}{{{\bf{\hat e}}}_x} + \frac{{\partial U}}{{\partial {r_y}}}{{{\bf{\hat e}}}_y}} \right)\]
 
 \begin{figure}
-\includegraphics[width=\textwidth]{image049}
+\includegraphics[width=\textwidth]{StatMech_figures/image049}
 \caption{\label{fig:Vscaling}Scaling the volume to a unit size.}
 \end{figure}
 
@@ -557,7 +572,11 @@ and note that our coordinate scaling now maps changes in the volume to
 changes in the spatial positions of all the molecules, and through this
 process effects a change in the energy. Consequently, the volume
 derivative can be expressed in terms of the forces on the molecules:
-\begin{align*}\frac{\partial }{{\partial V}}U(V{{\bf{s}}_1},...,V{{\bf{s}}_N}) &= \sum\limits_{i = 1}^N {\left( {\frac{{\partial U}}{{\partial \left( {L{s_{i,x}}} \right)}}\frac{{d\left( {L{s_{i,x}}} \right)}}{{dV}} + \frac{{\partial U}}{{\partial \left( {L{s_{i,y}}} \right)}}\frac{{d\left( {L{s_{i,y}}} \right)}}{{dV}}} \right)} \\ &= \frac{1}{{Vd}}\sum\limits_{i = 1}^N {\left( {\frac{{\partial U}}{{\partial {r_{i,x}}}}{r_{i,x}} + \frac{{\partial U}}{{\partial {r_{i,y}}}}{r_{i,y}}} \right)} \\ &= \frac{1}{{Vd}}\sum\limits_{i = 1}^N {{{\bf{F}}_i} \cdot {{\bf{r}}_i}} \end{align*}
+\begin{align*}
+\frac{\partial }{{\partial V}}U(V{{\bf{s}}_1},...,V{{\bf{s}}_N}) &= \sum\limits_{i = 1}^N {\left( {\frac{{\partial U}}{{\partial \left( {L{s_{i,x}}} \right)}}\frac{{d\left( {L{s_{i,x}}} \right)}}{{dV}} + \frac{{\partial U}}{{\partial \left( {L{s_{i,y}}} \right)}}\frac{{d\left( {L{s_{i,y}}} \right)}}{{dV}}} \right)} \\
+ &= \frac{1}{{Vd}}\sum\limits_{i = 1}^N {\left( {\frac{{\partial U}}{{\partial {r_{i,x}}}}{r_{i,x}} + \frac{{\partial U}}{{\partial {r_{i,y}}}}{r_{i,y}}} \right)} \\
+ &= \frac{1}{{Vd}}\sum\limits_{i = 1}^N {{{\bf{F}}_i} \cdot {{\bf{r}}_i}} 
+\end{align*}
 If we define the \emph{virial} $W$:
 \[W \equiv \frac{1}{d}\sum\limits_{i = 1}^N {{{\bf{F}}_i} \cdot {{\bf{r}}_i}} \]
 then on executing all the volume derivatives needed for the pressure, we
@@ -579,7 +598,10 @@ direction, the virial can be expressed as a pair sum too:
 where ${{\bf{r}}_{ij}} \equiv {{\bf{r}}_i} - {{\bf{r}}_j}$ and ${\bf F}_{ij}$ is the force that molecule
 \emph{j} exerts on molecule \emph{i}. For spherically symmetric
 intermolecular potentials, $u({{\bf{r}}_{ij}}) = u(|{{\bf{r}}_{ij}}|) = u(r)$, and this simplifies further
-\begin{align*}W &=  - \frac{1}{d}\sum\limits_{i = 1}^N {\sum\limits_{j < i} {{r_{ij}}\frac{{du({r_{ij}})}}{{d{r_{ij}}}}} } \\ &=  - \frac{1}{d}\sum\limits_{i = 1}^N {\sum\limits_{j < i} {w(r)} } \end{align*}
+\begin{align*}
+W &=  - \frac{1}{d}\sum\limits_{i = 1}^N {\sum\limits_{j < i} {{r_{ij}}\frac{{du({r_{ij}})}}{{d{r_{ij}}}}} } \\
+ &=  - \frac{1}{d}\sum\limits_{i = 1}^N {\sum\limits_{j < i} {w(r)} } 
+\end{align*}
 Measurements of the pressure by molecular simulation are usually not
 accomplished to the same precision as measurements of the energy.
 Adjacent molecules tend to position themselves about each other at the
@@ -599,7 +621,10 @@ this instant is the finite impulse that the spheres apply to each other,
 and it is this impulse that must be averaged to get the pressure.
 Referring to the material presented earlier on hard-sphere collisions,
 we have
-\begin{align*}\int\limits_{\rm{collision}} {{{\bf{r}}_{12}} \cdot {{\bf{f}}_{12}}dt}  &= {{\bf{r}}_{12}} \cdot \Delta {\bf{p}}\\ &= {m_R}{{\bf{v}}_{12}} \cdot {{\bf{r}}_{12}}\end{align*}
+\begin{align*}
+\int\limits_{\rm{collision}} {{{\bf{r}}_{12}} \cdot {{\bf{f}}_{12}}dt}  &= {{\bf{r}}_{12}} \cdot \Delta {\bf{p}}\\
+ &= {m_R}{{\bf{v}}_{12}} \cdot {{\bf{r}}_{12}}
+\end{align*}
 Contributions to the average needed for the pressure are made only at
 each collision, so the pressure can be computed by summing this quantity
 over all collisions
@@ -655,7 +680,10 @@ expressed as a second-derivative of a thermodynamic potential
 The formula for evaluating it by molecular simulation follows in simple
 way from the expression for the average energy. For convenience in what
 follows we express the $T$-derivative as a derivative of $\beta = 1/k_{\rm B}T$:
-\begin{align*}{C_v} &=  - k_{\rm B}{\beta ^2}{\left( {\frac{{\partial \left\langle E \right\rangle }}{{\partial \beta }}} \right)_{V,N}}\\ &=  - k_{\rm B}{\beta ^2}\frac{\partial }{{\partial \beta }}\frac{1}{{Q({\color{red} \beta} )}}\int {d{{\bf r}^N}d{{\bf p}^N}} E{e^{ - {\color{red} \beta} E}}.\end{align*}
+\begin{align*}
+{C_v} &=  - k_{\rm B}{\beta ^2}{\left( {\frac{{\partial \left\langle E \right\rangle }}{{\partial \beta }}} \right)_{V,N}}\\
+ &=  - k_{\rm B}{\beta ^2}\frac{\partial }{{\partial \beta }}\frac{1}{{Q({\color{red} \beta} )}}\int {d{{\bf r}^N}d{{\bf p}^N}} E{e^{ - {\color{red} \beta} E}}.
+\end{align*}
 
 The dependence on $\beta$ is highlighted in red. There are two parts, one
 involving the integrand, and the other involving the normalizing
@@ -701,12 +729,18 @@ We find in general that 2\textsuperscript{nd}-derivative properties are
 expressed as variances or covariances of the corresponding
 1\textsuperscript{st}-derivative properties. Thus we have the
 compressibility given as the variance of the volume in the \emph{NPT} ensemble
-\begin{align*}\kappa  &\equiv  - \frac{1}{V}{\left( {\frac{{\partial V}}{{\partial P}}} \right)_{T,N}}\\ &= \beta \frac{1}{V}\left[ {\left\langle {{V^2}} \right\rangle  - {{\left\langle V \right\rangle }^2}} \right]\end{align*}
+\begin{align*}
+\kappa  &\equiv  - \frac{1}{V}{\left( {\frac{{\partial V}}{{\partial P}}} \right)_{T,N}}\\
+ &= \beta \frac{1}{V}\left[ {\left\langle {{V^2}} \right\rangle  - {{\left\langle V \right\rangle }^2}} \right]
+\end{align*}
 or the molecule number in the grand-canonical ensemble
 \[\kappa  = \beta \frac{V}{{{N^2}}}\left[ {\left\langle {{N^2}} \right\rangle  - {{\left\langle N \right\rangle }^2}} \right]\]
 While the coefficient of thermal expansion is given as the covariance in
 the \emph{NPT} ensemble
-\begin{align*}{\alpha _T} &\equiv \frac{1}{V}{\left( {\frac{{\partial V}}{{\partial T}}} \right)_{P,N}}\\ &=  - k_{\rm B}{\beta ^2}\frac{1}{V}\left[ {\left\langle {HV} \right\rangle  - \left\langle H \right\rangle \left\langle V \right\rangle } \right]\end{align*}
+\begin{align*}
+{\alpha _T} &\equiv \frac{1}{V}{\left( {\frac{{\partial V}}{{\partial T}}} \right)_{P,N}}\\
+ &=  - k_{\rm B}{\beta ^2}\frac{1}{V}\left[ {\left\langle {HV} \right\rangle  - \left\langle H \right\rangle \left\langle V \right\rangle } \right]
+\end{align*}
 where $H \equiv E + PV$ is the instantaneous enthalpy. Relations for these quantities can
 also be written for the canonical ensemble using variances that involve
 the virial \emph{W}.
@@ -744,7 +778,7 @@ ensemble weight of the deviant members? Figure~\ref{fig:distn} provides a
 schematic of the question. 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{image094}
+\includegraphics[width=\textwidth]{StatMech_figures/image094}
 \caption{\label{fig:distn}Schematic of the distribution of energies in the canonical ensemble.}
 \end{figure}
 
@@ -753,7 +787,10 @@ root-mean-square difference of each configuational energy from the
 average. It is easy to show that this can be expressed as the difference
 in the ``average square energy'' and the ``square of the average
 energy''
-\begin{align*}{\sigma _E} &= {\left\langle {{{\left( {E - \left\langle E \right\rangle } \right)}^2}} \right\rangle ^{1/2}}\\ &= {\left[ {\left\langle {{E^2}} \right\rangle  - {{\left\langle E \right\rangle }^2}} \right]^{1/2}}\end{align*}
+\begin{align*}
+{\sigma _E} &= {\left\langle {{{\left( {E - \left\langle E \right\rangle } \right)}^2}} \right\rangle ^{1/2}}\\
+ &= {\left[ {\left\langle {{E^2}} \right\rangle  - {{\left\langle E \right\rangle }^2}} \right]^{1/2}}
+\end{align*}
 
 
 We recently encountered the latter expression in our discussion of the
@@ -792,15 +829,27 @@ order 1/\emph{N}. We can demonstrate the discrepancy with a simple
 example based on the ideal gas. The potential energy of an ideal gas is
 defined to be zero: $U({{\bf{r}}^N}) \equiv 0$. Consequently, the canonical ensemble partition
 function can be evaluated analytically:
-\begin{align*}{Q_{id}} &= \frac{1}{{{h^{dN}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}} {e^{ - \beta K({{\bf{p}}^N})}}} \\ &= \frac{{{V^N}}}{{{\Lambda ^{dN}}N!}}\end{align*}
+\begin{align*}
+{Q_{id}} &= \frac{1}{{{h^{dN}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}} {e^{ - \beta K({{\bf{p}}^N})}}} \\
+ &= \frac{{{V^N}}}{{{\Lambda ^{dN}}N!}}
+\end{align*}
 and the equation of state is easily derived:
-\begin{align*}{P_{\rm id}} &= kT\frac{{\partial \ln {Q_{\rm {id}}}}}{{\partial V}}\\ &= \frac{{NkT}}{V}
+\begin{align*}
+{P_{\rm id}} &= kT\frac{{\partial \ln {Q_{\rm {id}}}}}{{\partial V}}\\
+ &= \frac{{NkT}}{V}
 \end{align*}
 We could instead develop this result in the isothermal-isobaric
 ensemble. The partition function there is
-\begin{align*}\Delta  &= \int\limits_0^\infty  {dV{e^{ - \beta PV}}\frac{1}{{{h^{dN}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}} {e^{ - \beta E({{\bf{p}}^N},{{\bf{r}}^N})}}} } \\ &= \int\limits_0^\infty  {dV{e^{ - \beta PV}}\frac{{{V^N}}}{{{\Lambda ^{dN}}N!}}} \\ &= \frac{1}{{{{(\beta P)}^{N + 1}}{\Lambda ^{dN}}}}\end{align*}
+\begin{align*}
+\Delta  &= \int\limits_0^\infty  {dV{e^{ - \beta PV}}\frac{1}{{{h^{dN}}N!}}\int {d{{\bf{p}}^N}\int {d{{\bf{r}}^N}} {e^{ - \beta E({{\bf{p}}^N},{{\bf{r}}^N})}}} } \\
+ &= \int\limits_0^\infty  {dV{e^{ - \beta PV}}\frac{{{V^N}}}{{{\Lambda ^{dN}}N!}}} \\
+ &= \frac{1}{{{{(\beta P)}^{N + 1}}{\Lambda ^{dN}}}}
+\end{align*}
 The corresponding equation of state is given by
-\begin{align*}V &=  - \frac{{\partial \ln \Delta }}{{\partial (\beta P)}}\\ &= \frac{{N + 1}}{{\beta P}}\end{align*}
+\begin{align*}
+V &=  - \frac{{\partial \ln \Delta }}{{\partial (\beta P)}}\\
+ &= \frac{{N + 1}}{{\beta P}}
+\end{align*}
 from which
 \[{P_{\rm ig}} = \frac{{NkT}}{V} + \frac{\rho }{N}\]
 where $\rho = N/V$ is the number density. Clearly this expression differs
