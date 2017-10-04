@@ -106,10 +106,14 @@ depends on temperature, pressure and number of molecules for a system of
 interest.
 
 Different molecular simulation algorithms are required for different
-choices of the dependent and independent state variables. Common choices
+choices of the dependent and independent state variables. 
+Independent variables are those which can be used to specify the thermodynamic state of the system; that is, simulations are conducted in a particular ensemble with a particular choice of values for specified independent variables.
+Common choices
 for the independent variables are \emph{EVN} (the microcanonical ensemble), \emph{TVN}
 (canonical ensemble), \emph{TPN} (isothermal-isobaric ensemble) and \emph{TV$\mu$}
-(grand-canonical ensemble). Other choices are possible, but note that
+(grand-canonical ensemble).
+For example, simulations specifying \emph{EVN} hold temperature, volume and number of particles constant.
+Other choices for independent variables are possible, but note that
 there must always be at least one extensive variable in the set;
 otherwise there is nothing to specify the absolute size of the system,
 and the state is not well defined (violation of the Gibbs phase rule).
@@ -136,7 +140,8 @@ of these complicating features until later, when we examine more complex
 and realistic molecular models.
 
 If an extensive variable is not included in the state variables as
-discussed above, it becomes a configuration variable. So in an isobaric
+discussed above, it becomes a configuration variable and is part of the specification of the microscopic state of the system.
+So in an isobaric
 simulation (in which pressure is imposed instead of the volume), the
 volume will fluctuate as part of the simulation process, and the full
 microscopic state has the instantaneous volume as one if its variables.
@@ -159,7 +164,7 @@ must be applied in these cases.
 
 \paragraph{Properties}\label{properties}
 
-Other important physical quantities can be computed given a specific
+Many other important physical quantities can be computed given a specific
 molecular configuration. In addition to the energy, there are forces and
 torques that are needed to advance a molecular dynamics simulation. The
 virial is routinely computed to measure the pressure, and the stress
@@ -181,6 +186,7 @@ entropy is related to the number of distinct configurations that can be
 formed consistent with particular values of $E$, $V$, and $N$. Hence there is
 no ``entropy of a configuration'', but there is an entropy of an
 ensemble of configurations.
+Thus these statistical properties can \emph{only} be calculated from an ensemble of configurations.
 
 \paragraph{Model parameters}\label{model-parameters}
 
