@@ -1,73 +1,47 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LIVECOMS ARTICLE TEMPLATE FOR BEST PRACTICES GUIDE
+%%% ADAPTED FROM ELIFE ARTICLE TEMPLATE (8/10/2017)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PREAMBLE 
+\documentclass[9pt,bestpractices]{molsim}
+% Use the 'onehalfspacing' option for 1.5 line spacing
+% Use the 'doublespacing' option for 2.0 line spacing
+% Use the 'lineno' option for adding line numbers. 
+% The 'bestpractices' option for indicates that this is a best practices guide.
+% Omit the bestpractices option to remove the marking as a LiveCoMS paper.
+% Please note that these options may affect formatting.
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
+\usepackage{lipsum} % Required to insert dummy text
+\usepackage[version=4]{mhchem} 
+\usepackage{siunitx}
+\DeclareSIUnit\Molar{M}
+\newcommand{\versionnumber}{1.3}  % you should update the minor version number in preprints and major version number of submissions.
+\newcommand{\githubrepository}{\url{https://github.com/myaccount/homegithubrepository}}  %this should be the main github repository for this article
+\graphicspath{{figures/}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Hard Sphere Molecular Dynamics}
+
+\author[1*]{David A. Kofke}
+\affil[1]{University at Buffalo}
+
+\corr{kofke@buffalo.edu}{DAK}  % Correspondence emails.  FMS and FS are the appropriate authors initials. 
 
 
-\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\subsection{Hard-Sphere Molecular
-Dynamics}\label{hard-sphere-molecular-dynamics}
+\maketitle
+
+%\begin{abstract}
+%Please provide an abstract of no more than 250 words. Your abstract should explain the main contributions of your article, and should not contain any material that is not included in the main text.
+%\end{abstract}
+
+\section{Introduction}
 
 In this section we introduce the concepts and methods needed to perform
 molecular dynamics simulations of hard spheres. While these techniques
@@ -88,7 +62,7 @@ Once we have introduced the HS MD algorithm, we will move on to basic
 simulation elements, including boundary conditions, averaging and error
 estimation, the structure of a simulation, and initialization.
 
-\paragraph{Hard-sphere dynamics}\label{hard-sphere-dynamics}
+\section{Hard-sphere dynamics}\label{hard-sphere-dynamics}
 
 Hard spheres undergo impulsive, pairwise collisions. Never do three or
 more spheres collide simultaneously, all meeting at exactly the same
@@ -121,12 +95,12 @@ for example, if they approach with the same speed as each other).
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{HSMD_figures/image001}
+  \includegraphics[width=0.8\textwidth]{HSMD_figures/image001}
   \caption{\label{fig:force}Forces at collision.}
 \end{figure}
   
 
-\paragraph{Hard-sphere kinematics}\label{hard-sphere-kinematics}
+\section{Hard-sphere kinematics}\label{hard-sphere-kinematics}
 
 When the spheres are not colliding they move in free flight; no forces
 act on them and they do not accelerate. Thus over a collision-free
@@ -153,12 +127,12 @@ and the discriminant is positive).
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{HSMD_figures/image030}
+  \includegraphics[width=0.8\textwidth]{HSMD_figures/image030}
   \caption{\label{fig:approaches}Collision-approach cases.}
 \end{figure}
 
 
-\paragraph{Integration strategy}\label{integration-strategy}
+\section{Integration strategy}\label{integration-strategy}
 
 The time evolution of a system of hard spheres can be traced by handling
 each collision in sequence. The process is a simple repetition of
@@ -274,5 +248,11 @@ And, overall, the additional effort is not all that bad, and could be much worse
 Additional efficiencies can be brought into this process at the cost of
 additional complexity, but we will postpone this detailed discussion to
 another time. 
+
+%\section{Author Contributions}
+%\section{Other Contributions}
+
+\end{document}
+
 
 \end{document}
