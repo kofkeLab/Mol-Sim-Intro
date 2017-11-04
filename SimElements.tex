@@ -1,74 +1,43 @@
-\documentclass[]{article}
-\usepackage{lmodern}
-\usepackage{caption}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{graphicx,grffile}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
-\hypersetup{
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LIVECOMS ARTICLE TEMPLATE FOR BEST PRACTICES GUIDE
+%%% ADAPTED FROM ELIFE ARTICLE TEMPLATE (8/10/2017)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PREAMBLE
+\documentclass[9pt,bestpractices]{molsim}
+% Use the 'onehalfspacing' option for 1.5 line spacing
+% Use the 'doublespacing' option for 2.0 line spacing
+% Use the 'lineno' option for adding line numbers.
+% The 'bestpractices' option for indicates that this is a best practices guide.
+% Omit the bestpractices option to remove the marking as a LiveCoMS paper.
+% Please note that these options may affect formatting.
 
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
+\usepackage{lipsum} % Required to insert dummy text
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit\Molar{M}
+\newcommand{\versionnumber}{1.3}  % you should update the minor version number in preprints and major version number of submissions.
+\newcommand{\githubrepository}{\url{https://github.com/myaccount/homegithubrepository}}  %this should be the main github repository for this article
+\graphicspath{{figures/}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Physical quantities in molecular simulation}
 
+\author[1*]{David A. Kofke}
+\affil[1]{University at Buffalo}
 
-\date{}
+\corr{kofke@buffalo.edu}{DAK}  % Correspondence emails.  FMS and FS are the appropriate authors initials.
+
 
 \begin{document}
 
-\subsection{Physical quantities in molecular
-simulation}\label{physical-quantities-in-molecular-simulation}
+\maketitle
 
-In this section we review the types of physical quantities encountered
+In this chapter we review the types of physical quantities encountered
 in a molecular simulation.
 
-\paragraph{State variables}\label{state-variables}
+\section{Several types of quantities are of interest}
+\subsection{State variables}\label{state-variables}
 
 Molecular simulation describes physical systems, particularly ones that
 are usually examined in the context of chemical thermodynamics.
@@ -106,15 +75,19 @@ depends on temperature, pressure and number of molecules for a system of
 interest.
 
 Different molecular simulation algorithms are required for different
-choices of the dependent and independent state variables. Common choices
+choices of the dependent and independent state variables.
+Independent variables are those which can be used to specify the thermodynamic state of the system; that is, simulations are conducted in a particular ensemble with a particular choice of values for specified independent variables.
+Common choices
 for the independent variables are \emph{EVN} (the microcanonical ensemble), \emph{TVN}
 (canonical ensemble), \emph{TPN} (isothermal-isobaric ensemble) and \emph{TV$\mu$}
-(grand-canonical ensemble). Other choices are possible, but note that
+(grand-canonical ensemble).
+For example, simulations specifying \emph{EVN} hold temperature, volume and number of particles constant.
+Other choices for independent variables are possible, but note that
 there must always be at least one extensive variable in the set;
 otherwise there is nothing to specify the absolute size of the system,
 and the state is not well defined (violation of the Gibbs phase rule).
 
-\paragraph{Configuration variables}\label{configuration-variables}
+\subsection{Configuration variables}\label{configuration-variables}
 
 Molecular simulation of course deals with the arrangements and
 rearrangements of molecules, so variables specifying the molecular
@@ -136,7 +109,8 @@ of these complicating features until later, when we examine more complex
 and realistic molecular models.
 
 If an extensive variable is not included in the state variables as
-discussed above, it becomes a configuration variable. So in an isobaric
+discussed above, it becomes a configuration variable and is part of the specification of the microscopic state of the system.
+So in an isobaric
 simulation (in which pressure is imposed instead of the volume), the
 volume will fluctuate as part of the simulation process, and the full
 microscopic state has the instantaneous volume as one if its variables.
@@ -152,12 +126,12 @@ simulations.
 
 Note that this discussion applies to systems modeled
 classically (i.e., using classical mechanics). Electronic degrees of freedom
-are of interest in some cases (e.g., chemical reactions), and these may be 
-treated with quantum mechanics. For light atoms and/or low temperatures, 
+are of interest in some cases (e.g., chemical reactions), and these may be
+treated with quantum mechanics. For light atoms and/or low temperatures,
 quantum effects are relevant also to the atomic nuclei, and special measures
 must be applied in these cases.
 
-\paragraph{Properties}\label{properties}
+\subsection{Physical properties}\label{properties}
 
 Other important physical quantities can be computed given a specific
 molecular configuration. In addition to the energy, forces are needed to advance a molecular dynamics simulation.
@@ -180,8 +154,9 @@ entropy is related to the number of distinct configurations that can be
 formed consistent with particular values of $E$, $V$, and $N$. Hence there is
 no ``entropy of a configuration'', but there is an entropy of an
 ensemble of configurations.
+Thus these statistical properties can \emph{only} be calculated from an ensemble of configurations.
 
-\paragraph{Model parameters}\label{model-parameters}
+\subsection{Model parameters}\label{model-parameters}
 
 Another class of physical quantities arises with the specification of
 the molecular model. Classical models of molecular interactions are
@@ -202,7 +177,7 @@ bends, and torsional motions, bond lengths, asymmetric potential
 parameters, and so on. These models also may be constructed in part
 using Coulombic point charges or point multipoles.
 
-\subsubsection{Dimensions, Units, and
+\section{Dimensions, Units, and
 Scaling}\label{dimensions-units-and-scaling}
 
 The table below shows typical values of commonly used
@@ -238,7 +213,7 @@ vanish.
   \includegraphics[width=\textwidth]{SimElements_figures/magnitudes.pdf}
   \caption{\label{fig:magnitudes}Typical magnitudes of variables encountered in a molecular simulation.}
 \end{figure}
-  
+
 
 Note that the benefits gained from using dimensionless quantities are
 equally well realized if one takes care to use a consistent set of units
@@ -280,7 +255,7 @@ comparing the simulation to predictions from a statistical mechanical
 theory applied to the same model.
 
 As is likely apparent by now, unit handling can be complex and is a frequent source of error.
-In general, regardless of what approach is chosen, we recommend that user-facing components of programs use programming libraries which accommodate and handle units so that users can provide or obtain values in the units they prefer and still have the intended outcome. 
+In general, regardless of what approach is chosen, we recommend that user-facing components of programs use programming libraries which accommodate and handle units so that users can provide or obtain values in the units they prefer and still have the intended outcome.
 For example, a user might choose to provide a pressure in atmospheres or Pascals; ideally, both users should be able to obtain correct results without having to know what units your program will prefer.
 Several Python libraries (such as \texttt{pint} and \texttt{simtk.util} and probably others) are available which facilitate this process, and reduce the potential for critical errors due to unit handling in input or output.
 
@@ -314,7 +289,9 @@ $P = 0.146 (142.1~{\rm K})(13.8~{\rm MPa}\cdot\AA^{3}/{\rm molecule})/(3.790\AA)
 
 or 53 bars.
 
-Let us finish this section by highlighting a peculiar feature of the
+\subsection{Peculiarities of the hard sphere model with respect to units}
+
+Let us finish this chapter by highlighting a peculiar feature of the
 hard-sphere model. In the HS model the potential is infinite for atoms
 separated by less than one diameter $\sigma$, and is zero otherwise.
 
@@ -338,5 +315,9 @@ atoms. This is a good balance of simplicity and realism, and thus the
 hard-sphere model---examined through the application of theory and
 molecular simulation---has played a very important role in the
 development of our understanding of real fluids and solids.
+
+
+%\section{Author Contributions}
+%\section{Other Contributions}
 
 \end{document}
