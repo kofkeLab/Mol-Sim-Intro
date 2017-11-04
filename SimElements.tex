@@ -2,17 +2,17 @@
 %%% LIVECOMS ARTICLE TEMPLATE FOR BEST PRACTICES GUIDE
 %%% ADAPTED FROM ELIFE ARTICLE TEMPLATE (8/10/2017)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% PREAMBLE 
+%%% PREAMBLE
 \documentclass[9pt,bestpractices]{molsim}
 % Use the 'onehalfspacing' option for 1.5 line spacing
 % Use the 'doublespacing' option for 2.0 line spacing
-% Use the 'lineno' option for adding line numbers. 
+% Use the 'lineno' option for adding line numbers.
 % The 'bestpractices' option for indicates that this is a best practices guide.
 % Omit the bestpractices option to remove the marking as a LiveCoMS paper.
 % Please note that these options may affect formatting.
 
 \usepackage{lipsum} % Required to insert dummy text
-\usepackage[version=4]{mhchem} 
+\usepackage[version=4]{mhchem}
 \usepackage{siunitx}
 \DeclareSIUnit\Molar{M}
 \newcommand{\versionnumber}{1.3}  % you should update the minor version number in preprints and major version number of submissions.
@@ -26,7 +26,7 @@
 \author[1*]{David A. Kofke}
 \affil[1]{University at Buffalo}
 
-\corr{kofke@buffalo.edu}{DAK}  % Correspondence emails.  FMS and FS are the appropriate authors initials. 
+\corr{kofke@buffalo.edu}{DAK}  % Correspondence emails.  FMS and FS are the appropriate authors initials.
 
 
 \begin{document}
@@ -75,7 +75,7 @@ depends on temperature, pressure and number of molecules for a system of
 interest.
 
 Different molecular simulation algorithms are required for different
-choices of the dependent and independent state variables. 
+choices of the dependent and independent state variables.
 Independent variables are those which can be used to specify the thermodynamic state of the system; that is, simulations are conducted in a particular ensemble with a particular choice of values for specified independent variables.
 Common choices
 for the independent variables are \emph{EVN} (the microcanonical ensemble), \emph{TVN}
@@ -126,17 +126,16 @@ simulations.
 
 Note that this discussion applies to systems modeled
 classically (i.e., using classical mechanics). Electronic degrees of freedom
-are of interest in some cases (e.g., chemical reactions), and these may be 
-treated with quantum mechanics. For light atoms and/or low temperatures, 
+are of interest in some cases (e.g., chemical reactions), and these may be
+treated with quantum mechanics. For light atoms and/or low temperatures,
 quantum effects are relevant also to the atomic nuclei, and special measures
 must be applied in these cases.
 
 \subsection{Physical properties}\label{properties}
 
-Many other important physical quantities can be computed given a specific
-molecular configuration. In addition to the energy, there are forces and
-torques that are needed to advance a molecular dynamics simulation. The
-virial is routinely computed to measure the pressure, and the stress
+Other important physical quantities can be computed given a specific
+molecular configuration. In addition to the energy, forces are needed to advance a molecular dynamics simulation.
+The virial is routinely computed to measure the pressure, and the stress
 tensor may be needed to evaluate rheological properties. Indeed, it can
 be quite enlightening to learn and implement the formulas used to
 compute common but nontrivial physical properties (\emph{e.g.},
@@ -214,7 +213,7 @@ vanish.
   \includegraphics[width=\textwidth]{SimElements_figures/magnitudes.pdf}
   \caption{\label{fig:magnitudes}Typical magnitudes of variables encountered in a molecular simulation.}
 \end{figure}
-  
+
 
 Note that the benefits gained from using dimensionless quantities are
 equally well realized if one takes care to use a consistent set of units
@@ -255,7 +254,10 @@ is interested only in qualitative behaviors of the model, or in
 comparing the simulation to predictions from a statistical mechanical
 theory applied to the same model.
 
-\subsection{Unit conversion demonstrated}
+As is likely apparent by now, unit handling can be complex and is a frequent source of error.
+In general, regardless of what approach is chosen, we recommend that user-facing components of programs use programming libraries which accommodate and handle units so that users can provide or obtain values in the units they prefer and still have the intended outcome.
+For example, a user might choose to provide a pressure in atmospheres or Pascals; ideally, both users should be able to obtain correct results without having to know what units your program will prefer.
+Several Python libraries (such as \texttt{pint} and \texttt{simtk.util} and probably others) are available which facilitate this process, and reduce the potential for critical errors due to unit handling in input or output.
 
 Perhaps it is worthwhile to consider an example demonstrating conversion
 to and from scaled units. The Lennard-Jones (LJ) equation of state (which describes how
@@ -287,7 +289,7 @@ $P = 0.146 (142.1~{\rm K})(13.8~{\rm MPa}\cdot\AA^{3}/{\rm molecule})/(3.790\AA)
 
 or 53 bars.
 
-\subsection{Peculiarities of the hard sphere model with respect to units} 
+\subsection{Peculiarities of the hard sphere model with respect to units}
 
 Let us finish this chapter by highlighting a peculiar feature of the
 hard-sphere model. In the HS model the potential is infinite for atoms
